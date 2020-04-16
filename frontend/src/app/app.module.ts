@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +28,12 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductReadComponent } from './components/product-read/product-read.component';
 import { MatTableModule} from '@angular/material/table'
 
+import localePt from '@angular/common/locales/pt'
+import { registerLocaleData } from '@angular/common';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component'
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,8 @@ import { MatTableModule} from '@angular/material/table'
     RedDirective,
     ForDirective,
     ProductReadComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,
     
   ],
   imports: [
@@ -59,7 +66,10 @@ import { MatTableModule} from '@angular/material/table'
     FormsModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
